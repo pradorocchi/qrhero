@@ -1,11 +1,13 @@
-//
-//  QRhero.swift
-//  QRhero
-//
-//  Created by zero on 21.08.18.
-//  Copyright © 2018 iturbide. All rights reserved.
-//
+import UIKit
 
-class QRhero {
-
+public class QRhero {
+    private let reader:Reader
+    
+    public init() {
+        self.reader = Reader()
+    }
+    
+    public func read(image:UIImage) throws {
+        try self.reader.read(image:image)
+    }
 }

@@ -11,6 +11,8 @@
 		DA245FC8212BE98E00A327B2 /* QRhero.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA245FC7212BE98E00A327B2 /* QRhero.swift */; };
 		DA245FCD212BE9AC00A327B2 /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA245FCB212BE9AC00A327B2 /* Demo.swift */; };
 		DA245FCE212BE9AC00A327B2 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA245FCC212BE9AC00A327B2 /* Application.swift */; };
+		DA81539D212BF22F00DD8FBE /* QRheroError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81539C212BF22F00DD8FBE /* QRheroError.swift */; };
+		DA81539F212BF28400DD8FBE /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81539E212BF28400DD8FBE /* Reader.swift */; };
 		DAB2D8D7212BEB0F0067EDBF /* libQRhero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA245FC0212BE8F700A327B2 /* libQRhero.a */; };
 		DAB2D8D8212BEB140067EDBF /* libQRhero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA245FC0212BE8F700A327B2 /* libQRhero.a */; };
 		DAB2D8DC212BEC270067EDBF /* TestReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D8DB212BEC270067EDBF /* TestReader.swift */; };
@@ -53,6 +55,8 @@
 		DA245FC7212BE98E00A327B2 /* QRhero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRhero.swift; sourceTree = "<group>"; };
 		DA245FCB212BE9AC00A327B2 /* Demo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
 		DA245FCC212BE9AC00A327B2 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		DA81539C212BF22F00DD8FBE /* QRheroError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRheroError.swift; sourceTree = "<group>"; };
+		DA81539E212BF28400DD8FBE /* Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
 		DAB2D8DB212BEC270067EDBF /* TestReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				DA245FC7212BE98E00A327B2 /* QRhero.swift */,
+				DA81539C212BF22F00DD8FBE /* QRheroError.swift */,
+				DA81539E212BF28400DD8FBE /* Reader.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -257,7 +263,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA81539F212BF28400DD8FBE /* Reader.swift in Sources */,
 				DA245FC8212BE98E00A327B2 /* QRhero.swift in Sources */,
+				DA81539D212BF22F00DD8FBE /* QRheroError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
