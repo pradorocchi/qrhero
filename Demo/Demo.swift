@@ -1,9 +1,18 @@
 import UIKit
+import QRhero
 
 class Demo:UIViewController {
-    weak var generate:UIButton!
-    weak var scanner:UIButton!
-    weak var text:UITextField!
+    private weak var generate:UIButton!
+    private weak var scanner:UIButton!
+    private weak var text:UITextField!
+    private let model:QRhero
+    
+    init() {
+        self.model = QRhero()
+        super.init(nibName:nil, bundle:nil)
+    }
+    
+    required init?(coder:NSCoder) { return nil }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,10 +63,22 @@ class Demo:UIViewController {
     }
     
     @objc private func doGenerate() {
-        
+        self.model.write(content:self.text.text!) { [weak self] (image:UIImage) in
+            self?.share(image:image)
+        }
     }
     
     @objc private func doScanner() {
         
+    }
+    
+    private func share(image:UIImage) {
+        let view:UIActivityViewController = UIActivityViewController(activityItems:[image], applicationActivities:nil)
+        if let popover:UIPopoverPresentationController = view.popoverPresentationController {
+            popover.sourceView = self.view
+            popover.sourceRect = CGRect.zero
+            popover.permittedArrowDirections = UIPopoverArrowDirection.any
+        }
+        self.present(view, animated:true, completion:nil)
     }
 }
