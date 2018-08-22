@@ -6,8 +6,8 @@ class Reader {
         
     }
     
-    func read(image:UIImage) throws {
-        try self.read(features:self.features(image:image))
+    func read(image:UIImage) throws -> String {
+        return try self.read(features:self.features(image:image))
     }
     
     private func features(image:UIImage) throws -> [CIFeature] {
@@ -29,11 +29,11 @@ class Reader {
         return options
     }
     
-    private func read(features:[CIFeature]) throws {
+    private func read(features:[CIFeature]) throws -> String {
         for feature:CIFeature in features {
             if  let qr:CIQRCodeFeature = feature as? CIQRCodeFeature,
                 let message:String = qr.messageString {
-                return
+                return message
             }
         }
         throw QRheroError.imageHasNoQrCode

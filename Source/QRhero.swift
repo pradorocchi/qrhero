@@ -7,7 +7,7 @@ public class QRhero {
         self.reader = Reader()
     }
     
-    public func read(image:UIImage) throws {
-        try self.reader.read(image:image)
+    public func read(image:UIImage) throws -> String {
+        return try self.reader.read(image:image)
     }
 }
