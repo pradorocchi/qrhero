@@ -133,8 +133,8 @@
 		DA245FCA212BE9AC00A327B2 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				DA245FCB212BE9AC00A327B2 /* Demo.swift */,
 				DA245FCC212BE9AC00A327B2 /* Application.swift */,
+				DA245FCB212BE9AC00A327B2 /* Demo.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
