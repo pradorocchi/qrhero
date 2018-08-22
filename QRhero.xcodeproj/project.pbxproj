@@ -15,6 +15,7 @@
 		DA4E6C38212D392400EB8CC8 /* TestWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E6C37212D392400EB8CC8 /* TestWriter.swift */; };
 		DA4E6C3A212D39CD00EB8CC8 /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E6C39212D39CD00EB8CC8 /* Writer.swift */; };
 		DA4E6C3C212D42DD00EB8CC8 /* QRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E6C3B212D42DD00EB8CC8 /* QRView.swift */; };
+		DA4E6C3E212D47C400EB8CC8 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E6C3D212D47C400EB8CC8 /* Scanner.swift */; };
 		DA81539D212BF22F00DD8FBE /* QRheroError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81539C212BF22F00DD8FBE /* QRheroError.swift */; };
 		DA81539F212BF28400DD8FBE /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81539E212BF28400DD8FBE /* Reader.swift */; };
 		DAB2D8D7212BEB0F0067EDBF /* libQRhero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA245FC0212BE8F700A327B2 /* libQRhero.a */; };
@@ -63,6 +64,7 @@
 		DA4E6C37212D392400EB8CC8 /* TestWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWriter.swift; sourceTree = "<group>"; };
 		DA4E6C39212D39CD00EB8CC8 /* Writer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writer.swift; sourceTree = "<group>"; };
 		DA4E6C3B212D42DD00EB8CC8 /* QRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRView.swift; sourceTree = "<group>"; };
+		DA4E6C3D212D47C400EB8CC8 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		DA81539C212BF22F00DD8FBE /* QRheroError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRheroError.swift; sourceTree = "<group>"; };
 		DA81539E212BF28400DD8FBE /* Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
 		DAB2D8DB212BEC270067EDBF /* TestReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReader.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				DA245FCC212BE9AC00A327B2 /* Application.swift */,
 				DA245FCB212BE9AC00A327B2 /* Demo.swift */,
+				DA4E6C3D212D47C400EB8CC8 /* Scanner.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA245FCE212BE9AC00A327B2 /* Application.swift in Sources */,
+				DA4E6C3E212D47C400EB8CC8 /* Scanner.swift in Sources */,
 				DA245FCD212BE9AC00A327B2 /* Demo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

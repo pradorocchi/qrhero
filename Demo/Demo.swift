@@ -69,7 +69,7 @@ class Demo:UIViewController {
     }
     
     @objc private func doScanner() {
-        
+        self.present(Scanner(), animated:true, completion:nil)
     }
     
     private func share(image:UIImage) {
