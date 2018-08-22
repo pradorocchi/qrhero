@@ -26,8 +26,12 @@ public class QRhero {
         }
     }
     
-    public func write(content:String) -> UIImage? {
-        return self.writer.write(content:content)
+    public func write(content:String, result:@escaping((UIImage) -> Void)) {
+        self.queue.async { [weak self] in
+            if let image:UIImage = self?.writer.write(content:content) {
+                DispatchQueue.main.async { result(image) }
+            }
+        }
     }
 }
 
