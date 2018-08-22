@@ -2,10 +2,6 @@ import UIKit
 import CoreImage
 
 class Reader {
-    init() {
-        
-    }
-    
     func read(image:UIImage) throws -> String {
         return try self.read(features:self.features(image:image))
     }

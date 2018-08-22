@@ -3,10 +3,19 @@ import XCTest
 
 class TestReader:XCTestCase {
     func testReturnErrorIfWrongImage() {
-        XCTAssertThrowsError(try QRhero().read(image:UIImage()), "Failed to throw")
+        let expect:XCTestExpectation = self.expectation(description:"Not reading")
+        let model:QRhero = QRhero()
+        DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
+            model.read(image:UIImage(), result: { (result:String) in }, error: { (error:Error) in
+                XCTAssertEqual(Thread.current, Thread.main, "Should be main thread")
+                expect.fulfill()
+            })
+        }
+        self.waitForExpectations(timeout:1, handler:nil)
     }
     
     func testReturnContentFromValidImage() {
+        let expect:XCTestExpectation = self.expectation(description:"Not reading")
         let image:UIImage
         do {
             let data:Data = try Data(contentsOf:Bundle(for:TestReader.self).url(
@@ -17,8 +26,13 @@ class TestReader:XCTestCase {
             return
         }
         let model:QRhero = QRhero()
-        var message:String!
-        XCTAssertNoThrow(message = try model.read(image:image), "Failed to read")
-        XCTAssertEqual("http://en.m.wikipedia.org", message, "Invalid content")
+        DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
+            model.read(image:image, result: { (result:String) in
+                XCTAssertEqual("http://en.m.wikipedia.org", result, "Invalid result")
+                XCTAssertEqual(Thread.current, Thread.main, "Should be main thread")
+                expect.fulfill()
+            })
+        }
+        self.waitForExpectations(timeout:1, handler:nil)
     }
 }
