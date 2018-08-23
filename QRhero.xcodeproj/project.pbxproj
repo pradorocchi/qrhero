@@ -7,10 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA245FC5212BE98200A327B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA245FC4212BE98200A327B2 /* LaunchScreen.storyboard */; };
 		DA245FC8212BE98E00A327B2 /* QRhero.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA245FC7212BE98E00A327B2 /* QRhero.swift */; };
 		DA245FCD212BE9AC00A327B2 /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA245FCB212BE9AC00A327B2 /* Demo.swift */; };
 		DA245FCE212BE9AC00A327B2 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA245FCC212BE9AC00A327B2 /* Application.swift */; };
+		DA4E6C2C212D32B700EB8CC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA4E6C2B212D32AB00EB8CC8 /* LaunchScreen.storyboard */; };
+		DA4E6C36212D361200EB8CC8 /* qrcode.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4E6C35212D361200EB8CC8 /* qrcode.png */; };
+		DA4E6C38212D392400EB8CC8 /* TestWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E6C37212D392400EB8CC8 /* TestWriter.swift */; };
+		DA4E6C3A212D39CD00EB8CC8 /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E6C39212D39CD00EB8CC8 /* Writer.swift */; };
+		DA4E6C3C212D42DD00EB8CC8 /* QRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E6C3B212D42DD00EB8CC8 /* QRView.swift */; };
+		DA7BCBD1212E81DA00AA6BE3 /* QRViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBD0212E81DA00AA6BE3 /* QRViewDelegate.swift */; };
+		DA7BCBD3212E81FC00AA6BE3 /* TestQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBD2212E81FC00AA6BE3 /* TestQRView.swift */; };
+		DA7BCBD5212E820700AA6BE3 /* MockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBD4212E820700AA6BE3 /* MockDelegate.swift */; };
+		DA7BCBD7212E8FE500AA6BE3 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBD6212E8FE500AA6BE3 /* Camera.swift */; };
+		DA7BCBD9212E9EBD00AA6BE3 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBD8212E9EBD00AA6BE3 /* Library.swift */; };
+		DA7BCBDB212E9ED700AA6BE3 /* LibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBDA212E9ED700AA6BE3 /* LibraryCell.swift */; };
+		DA81539D212BF22F00DD8FBE /* QRheroError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81539C212BF22F00DD8FBE /* QRheroError.swift */; };
+		DA81539F212BF28400DD8FBE /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81539E212BF28400DD8FBE /* Reader.swift */; };
 		DAB2D8D7212BEB0F0067EDBF /* libQRhero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA245FC0212BE8F700A327B2 /* libQRhero.a */; };
 		DAB2D8D8212BEB140067EDBF /* libQRhero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA245FC0212BE8F700A327B2 /* libQRhero.a */; };
 		DAB2D8DC212BEC270067EDBF /* TestReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB2D8DB212BEC270067EDBF /* TestReader.swift */; };
@@ -49,10 +61,22 @@
 		DA245FBF212BE41F00A327B2 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA245FC0212BE8F700A327B2 /* libQRhero.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libQRhero.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA245FC1212BE8F700A327B2 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA245FC4212BE98200A327B2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA245FC7212BE98E00A327B2 /* QRhero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRhero.swift; sourceTree = "<group>"; };
 		DA245FCB212BE9AC00A327B2 /* Demo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
 		DA245FCC212BE9AC00A327B2 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		DA4E6C2B212D32AB00EB8CC8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DA4E6C35212D361200EB8CC8 /* qrcode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qrcode.png; sourceTree = "<group>"; };
+		DA4E6C37212D392400EB8CC8 /* TestWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWriter.swift; sourceTree = "<group>"; };
+		DA4E6C39212D39CD00EB8CC8 /* Writer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writer.swift; sourceTree = "<group>"; };
+		DA4E6C3B212D42DD00EB8CC8 /* QRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRView.swift; sourceTree = "<group>"; };
+		DA7BCBD0212E81DA00AA6BE3 /* QRViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewDelegate.swift; sourceTree = "<group>"; };
+		DA7BCBD2212E81FC00AA6BE3 /* TestQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestQRView.swift; sourceTree = "<group>"; };
+		DA7BCBD4212E820700AA6BE3 /* MockDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDelegate.swift; sourceTree = "<group>"; };
+		DA7BCBD6212E8FE500AA6BE3 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		DA7BCBD8212E9EBD00AA6BE3 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		DA7BCBDA212E9ED700AA6BE3 /* LibraryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCell.swift; sourceTree = "<group>"; };
+		DA81539C212BF22F00DD8FBE /* QRheroError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRheroError.swift; sourceTree = "<group>"; };
+		DA81539E212BF28400DD8FBE /* Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
 		DAB2D8DB212BEC270067EDBF /* TestReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,7 +113,7 @@
 				DA245FC6212BE98E00A327B2 /* Source */,
 				DA245FC9212BE99900A327B2 /* Tests */,
 				DA245FCA212BE9AC00A327B2 /* Demo */,
-				DA245FC3212BE98200A327B2 /* Resources */,
+				DA4E6C29212D32AB00EB8CC8 /* Resources */,
 				DA245FBF212BE41F00A327B2 /* Tests.xctest */,
 				DA245FC0212BE8F700A327B2 /* libQRhero.a */,
 				DA245FC1212BE8F700A327B2 /* Demo.app */,
@@ -97,18 +121,18 @@
 			);
 			sourceTree = "<group>";
 		};
-		DA245FC3212BE98200A327B2 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				DA245FC4212BE98200A327B2 /* LaunchScreen.storyboard */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		DA245FC6212BE98E00A327B2 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				DA245FC7212BE98E00A327B2 /* QRhero.swift */,
+				DA81539C212BF22F00DD8FBE /* QRheroError.swift */,
+				DA81539E212BF28400DD8FBE /* Reader.swift */,
+				DA4E6C39212D39CD00EB8CC8 /* Writer.swift */,
+				DA4E6C3B212D42DD00EB8CC8 /* QRView.swift */,
+				DA7BCBD0212E81DA00AA6BE3 /* QRViewDelegate.swift */,
+				DA7BCBD6212E8FE500AA6BE3 /* Camera.swift */,
+				DA7BCBD8212E9EBD00AA6BE3 /* Library.swift */,
+				DA7BCBDA212E9ED700AA6BE3 /* LibraryCell.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -117,6 +141,9 @@
 			isa = PBXGroup;
 			children = (
 				DAB2D8DB212BEC270067EDBF /* TestReader.swift */,
+				DA4E6C37212D392400EB8CC8 /* TestWriter.swift */,
+				DA7BCBD2212E81FC00AA6BE3 /* TestQRView.swift */,
+				DA7BCBD4212E820700AA6BE3 /* MockDelegate.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -124,10 +151,19 @@
 		DA245FCA212BE9AC00A327B2 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				DA245FCB212BE9AC00A327B2 /* Demo.swift */,
 				DA245FCC212BE9AC00A327B2 /* Application.swift */,
+				DA245FCB212BE9AC00A327B2 /* Demo.swift */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		DA4E6C29212D32AB00EB8CC8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DA4E6C35212D361200EB8CC8 /* qrcode.png */,
+				DA4E6C2B212D32AB00EB8CC8 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		DAB2D8D6212BEB0F0067EDBF /* Frameworks */ = {
@@ -239,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA4E6C36212D361200EB8CC8 /* qrcode.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA245FC5212BE98200A327B2 /* LaunchScreen.storyboard in Resources */,
+				DA4E6C2C212D32B700EB8CC8 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +294,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7BCBDB212E9ED700AA6BE3 /* LibraryCell.swift in Sources */,
+				DA7BCBD1212E81DA00AA6BE3 /* QRViewDelegate.swift in Sources */,
+				DA4E6C3A212D39CD00EB8CC8 /* Writer.swift in Sources */,
+				DA81539F212BF28400DD8FBE /* Reader.swift in Sources */,
 				DA245FC8212BE98E00A327B2 /* QRhero.swift in Sources */,
+				DA4E6C3C212D42DD00EB8CC8 /* QRView.swift in Sources */,
+				DA7BCBD9212E9EBD00AA6BE3 /* Library.swift in Sources */,
+				DA7BCBD7212E8FE500AA6BE3 /* Camera.swift in Sources */,
+				DA81539D212BF22F00DD8FBE /* QRheroError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +310,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7BCBD3212E81FC00AA6BE3 /* TestQRView.swift in Sources */,
+				DA4E6C38212D392400EB8CC8 /* TestWriter.swift in Sources */,
+				DA7BCBD5212E820700AA6BE3 /* MockDelegate.swift in Sources */,
 				DAB2D8DC212BEC270067EDBF /* TestReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,7 +533,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = iturbide.QRhero.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = iturbide.QRhero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -501,7 +549,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = iturbide.QRhero.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = iturbide.QRhero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
