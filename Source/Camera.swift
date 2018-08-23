@@ -7,58 +7,58 @@ class Camera:UIView, AVCaptureMetadataOutputObjectsDelegate {
     
     init() {
         super.init(frame:CGRect.zero)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.isUserInteractionEnabled = false
+        translatesAutoresizingMaskIntoConstraints = false
+        isUserInteractionEnabled = false
     }
     
     required init?(coder:NSCoder) { return nil }
     
     func metadataOutput(_:AVCaptureMetadataOutput, didOutput objects:[AVMetadataObject], from:AVCaptureConnection) {
         guard
-            let object:AVMetadataMachineReadableCodeObject = objects.first as? AVMetadataMachineReadableCodeObject,
-            let string:String = object.stringValue
+            let object = objects.first as? AVMetadataMachineReadableCodeObject,
+            let string = object.stringValue
         else { return }
-        self.cleanSession()
+        cleanSession()
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-        self.view.read(content:string)
+        view.read(content:string)
     }
     
     func startSession() {
-        if self.session != nil { return }
-        let session:AVCaptureSession = AVCaptureSession()
-        session.sessionPreset = AVCaptureSession.Preset.hd1280x720
-        let previewLayer:AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session:session)
-        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        previewLayer.frame = self.bounds
-        self.session = session
-        self.startInput()
-        self.startOutput()
-        self.layer.addSublayer(previewLayer)
-        session.startRunning()
+        if session == nil {
+            let session = AVCaptureSession()
+            session.sessionPreset = .hd1280x720
+            let preview = AVCaptureVideoPreviewLayer(session:session)
+            preview.videoGravity = .resizeAspectFill
+            preview.frame = bounds
+            self.session = session
+            startInput()
+            startOutput()
+            layer.addSublayer(preview)
+            session.startRunning()
+        }
     }
     
     func cleanSession() {
-        self.session?.stopRunning()
-        self.session = nil
+        session?.stopRunning()
+        session = nil
     }
     
     private func startInput() {
         let device:AVCaptureDevice?
         if #available(iOS 10.0, *) {
-            device = AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for:AVMediaType.video,
-                                             position:AVCaptureDevice.Position.back)
-        } else { device = AVCaptureDevice.default(for:AVMediaType.video) }
-        if let input:AVCaptureDevice = device {
-            do { self.session?.addInput(try AVCaptureDeviceInput(device:input)) } catch { return }
+            device = AVCaptureDevice.default(.builtInWideAngleCamera, for:.video, position:.back)
+        } else { device = AVCaptureDevice.default(for:.video) }
+        if let input = device {
+            do { session?.addInput(try AVCaptureDeviceInput(device:input)) } catch { return }
         }
     }
     
     private func startOutput() {
-        let output:AVCaptureMetadataOutput = AVCaptureMetadataOutput()
-        self.session?.addOutput(output)
-        if output.availableMetadataObjectTypes.contains(AVMetadataObject.ObjectType.qr) {
-            output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
+        let output = AVCaptureMetadataOutput()
+        if output.availableMetadataObjectTypes.contains(.qr) {
+            output.metadataObjectTypes = [.qr]
         }
-        output.setMetadataObjectsDelegate(self, queue:DispatchQueue.global(qos:DispatchQoS.QoSClass.background))
+        output.setMetadataObjectsDelegate(self, queue:.global(qos:.background))
+        session?.addOutput(output)
     }
 }

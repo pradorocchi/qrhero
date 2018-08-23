@@ -19,6 +19,8 @@
 		DA7BCBD3212E81FC00AA6BE3 /* TestQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBD2212E81FC00AA6BE3 /* TestQRView.swift */; };
 		DA7BCBD5212E820700AA6BE3 /* MockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBD4212E820700AA6BE3 /* MockDelegate.swift */; };
 		DA7BCBD7212E8FE500AA6BE3 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBD6212E8FE500AA6BE3 /* Camera.swift */; };
+		DA7BCBD9212E9EBD00AA6BE3 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBD8212E9EBD00AA6BE3 /* Library.swift */; };
+		DA7BCBDB212E9ED700AA6BE3 /* LibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBDA212E9ED700AA6BE3 /* LibraryCell.swift */; };
 		DA81539D212BF22F00DD8FBE /* QRheroError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81539C212BF22F00DD8FBE /* QRheroError.swift */; };
 		DA81539F212BF28400DD8FBE /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81539E212BF28400DD8FBE /* Reader.swift */; };
 		DAB2D8D7212BEB0F0067EDBF /* libQRhero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA245FC0212BE8F700A327B2 /* libQRhero.a */; };
@@ -71,6 +73,8 @@
 		DA7BCBD2212E81FC00AA6BE3 /* TestQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestQRView.swift; sourceTree = "<group>"; };
 		DA7BCBD4212E820700AA6BE3 /* MockDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDelegate.swift; sourceTree = "<group>"; };
 		DA7BCBD6212E8FE500AA6BE3 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		DA7BCBD8212E9EBD00AA6BE3 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		DA7BCBDA212E9ED700AA6BE3 /* LibraryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCell.swift; sourceTree = "<group>"; };
 		DA81539C212BF22F00DD8FBE /* QRheroError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRheroError.swift; sourceTree = "<group>"; };
 		DA81539E212BF28400DD8FBE /* Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
 		DAB2D8DB212BEC270067EDBF /* TestReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReader.swift; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 				DA4E6C3B212D42DD00EB8CC8 /* QRView.swift */,
 				DA7BCBD0212E81DA00AA6BE3 /* QRViewDelegate.swift */,
 				DA7BCBD6212E8FE500AA6BE3 /* Camera.swift */,
+				DA7BCBD8212E9EBD00AA6BE3 /* Library.swift */,
+				DA7BCBDA212E9ED700AA6BE3 /* LibraryCell.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -288,11 +294,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7BCBDB212E9ED700AA6BE3 /* LibraryCell.swift in Sources */,
 				DA7BCBD1212E81DA00AA6BE3 /* QRViewDelegate.swift in Sources */,
 				DA4E6C3A212D39CD00EB8CC8 /* Writer.swift in Sources */,
 				DA81539F212BF28400DD8FBE /* Reader.swift in Sources */,
 				DA245FC8212BE98E00A327B2 /* QRhero.swift in Sources */,
 				DA4E6C3C212D42DD00EB8CC8 /* QRView.swift in Sources */,
+				DA7BCBD9212E9EBD00AA6BE3 /* Library.swift in Sources */,
 				DA7BCBD7212E8FE500AA6BE3 /* Camera.swift in Sources */,
 				DA81539D212BF22F00DD8FBE /* QRheroError.swift in Sources */,
 			);

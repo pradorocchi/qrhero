@@ -8,92 +8,91 @@ class Demo:UIViewController, QRViewDelegate {
     private let model:QRhero
     
     init() {
-        self.model = QRhero()
+        model = QRhero()
         super.init(nibName:nil, bundle:nil)
     }
     
     required init?(coder:NSCoder) { return nil }
     
     func qrRead(content:String) {
-        self.dismiss(animated:true) { [weak self] in
-            let alert:UIAlertController = UIAlertController(title:"Read", message:content,
-                                                            preferredStyle:UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title:"Continue", style:UIAlertAction.Style.default, handler:nil))
-            self?.present(alert, animated:true, completion:nil)
+        dismiss(animated:true) { [weak self] in
+            let alert = UIAlertController(title:"Read", message:content, preferredStyle:.alert)
+            alert.addAction(UIAlertAction(title:"Continue", style:.default, handler:nil))
+            self?.present(alert, animated:true)
         }
     }
     
     func qrCancelled() {
-        self.dismiss(animated:true, completion:nil)
+        dismiss(animated:true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.makeOutlets()
-        self.layoutOutlets()
+        makeOutlets()
+        layoutOutlets()
     }
     
     private func makeOutlets() {
-        let text:UITextField = UITextField()
+        let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
-        text.backgroundColor = UIColor(white:0.9, alpha:1.0)
+        text.backgroundColor = UIColor(white:0.9, alpha:1)
         text.text = "Message here"
+        view.addSubview(text)
         self.text = text
-        self.view.addSubview(text)
         
-        let generate:UIButton = UIButton()
+        let generate = UIButton()
         generate.translatesAutoresizingMaskIntoConstraints = false
-        generate.setTitle("Generate QR Code", for:UIControl.State())
-        generate.setTitleColor(UIColor.blue, for:UIControl.State())
-        generate.addTarget(self, action:#selector(self.doGenerate), for:UIControl.Event.touchUpInside)
+        generate.setTitle("Generate QR Code", for:[])
+        generate.setTitleColor(.blue, for:[])
+        generate.addTarget(self, action:#selector(doGenerate), for:.touchUpInside)
+        view.addSubview(generate)
         self.generate = generate
-        self.view.addSubview(generate)
         
-        let scanner:UIButton = UIButton()
+        let scanner = UIButton()
         scanner.translatesAutoresizingMaskIntoConstraints = false
-        scanner.setTitle("Scanner", for:UIControl.State())
-        scanner.setTitleColor(UIColor.blue, for:UIControl.State())
-        scanner.addTarget(self, action:#selector(self.doScanner), for:UIControl.Event.touchUpInside)
+        scanner.setTitle("Scanner", for:[])
+        scanner.setTitleColor(.blue, for:[])
+        scanner.addTarget(self, action:#selector(doScanner), for:.touchUpInside)
+        view.addSubview(scanner)
         self.scanner = scanner
-        self.view.addSubview(scanner)
     }
     
     private func layoutOutlets() {
-        self.text.topAnchor.constraint(equalTo:self.view.topAnchor, constant:80.0).isActive = true
-        self.text.centerXAnchor.constraint(equalTo:self.view.centerXAnchor).isActive = true
-        self.text.heightAnchor.constraint(equalToConstant:45.0).isActive = true
-        self.text.widthAnchor.constraint(equalToConstant:220.0).isActive = true
+        text.topAnchor.constraint(equalTo:view.topAnchor, constant:80).isActive = true
+        text.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
+        text.heightAnchor.constraint(equalToConstant:45).isActive = true
+        text.widthAnchor.constraint(equalToConstant:220).isActive = true
         
-        self.generate.topAnchor.constraint(equalTo:self.text.bottomAnchor, constant:20.0).isActive = true
-        self.generate.centerXAnchor.constraint(equalTo:self.view.centerXAnchor).isActive = true
-        self.generate.widthAnchor.constraint(equalToConstant:200.0).isActive = true
-        self.generate.heightAnchor.constraint(equalToConstant:40.0).isActive = true
+        generate.topAnchor.constraint(equalTo:text.bottomAnchor, constant:20).isActive = true
+        generate.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
+        generate.widthAnchor.constraint(equalToConstant:200).isActive = true
+        generate.heightAnchor.constraint(equalToConstant:40).isActive = true
         
-        self.scanner.topAnchor.constraint(equalTo:self.generate.bottomAnchor, constant:100.0).isActive = true
-        self.scanner.centerXAnchor.constraint(equalTo:self.view.centerXAnchor).isActive = true
-        self.scanner.widthAnchor.constraint(equalToConstant:200.0).isActive = true
-        self.scanner.heightAnchor.constraint(equalToConstant:40.0).isActive = true
+        scanner.topAnchor.constraint(equalTo:generate.bottomAnchor, constant:100).isActive = true
+        scanner.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
+        scanner.widthAnchor.constraint(equalToConstant:200).isActive = true
+        scanner.heightAnchor.constraint(equalToConstant:40).isActive = true
     }
     
     @objc private func doGenerate() {
-        self.model.write(content:self.text.text!) { [weak self] (image:UIImage) in
+        model.write(content:text.text!) { [weak self] (image) in
             self?.share(image:image)
         }
     }
     
     @objc private func doScanner() {
-        let view:QRView = QRView()
+        let view = QRView()
         view.delegate = self
-        self.present(view, animated:true, completion:nil)
+        present(view, animated:true)
     }
     
     private func share(image:UIImage) {
-        let view:UIActivityViewController = UIActivityViewController(activityItems:[image], applicationActivities:nil)
-        if let popover:UIPopoverPresentationController = view.popoverPresentationController {
-            popover.sourceView = self.view
-            popover.sourceRect = CGRect.zero
-            popover.permittedArrowDirections = UIPopoverArrowDirection.any
+        let activity = UIActivityViewController(activityItems:[image], applicationActivities:nil)
+        if let popover = activity.popoverPresentationController {
+            popover.sourceView = view
+            popover.sourceRect = .zero
+            popover.permittedArrowDirections = .any
         }
-        self.present(view, animated:true, completion:nil)
+        present(activity, animated:true)
     }
 }

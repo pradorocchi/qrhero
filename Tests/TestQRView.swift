@@ -7,26 +7,26 @@ class TestQRView:XCTestCase {
 
     override func setUp() {
         super.setUp()
-        self.view = QRView()
-        self.delegate = MockDelegate()
-        self.view.delegate = self.delegate
-        self.view.viewDidLoad()
+        view = QRView()
+        delegate = MockDelegate()
+        view.delegate = delegate
+        view.viewDidLoad()
     }
     
     func testCallsCancel() {
-        let expect:XCTestExpectation = self.expectation(description:"Not called")
-        self.delegate.onCancel = { expect.fulfill() }
-        self.view.doCancel()
-        self.waitForExpectations(timeout:1, handler:nil)
+        let expect = expectation(description:"Not called")
+        delegate.onCancel = { expect.fulfill() }
+        view.doCancel()
+        waitForExpectations(timeout:1, handler:nil)
     }
     
     func testReadNotifiesDelegate() {
-        let expect:XCTestExpectation = self.expectation(description:"Not called")
-        self.delegate.onRead = {
+        let expect = expectation(description:"Not called")
+        delegate.onRead = {
             XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
             expect.fulfill()
         }
-        DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async { self.view.read(content:String()) }
-        self.waitForExpectations(timeout:1, handler:nil)
+        DispatchQueue.global(qos:.background).async { self.view.read(content:String()) }
+        waitForExpectations(timeout:1, handler:nil)
     }
 }

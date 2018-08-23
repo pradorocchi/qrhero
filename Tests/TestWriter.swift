@@ -3,18 +3,18 @@ import XCTest
 
 class TestWriter:XCTestCase {
     func testWriteContent() {
-        let expect:XCTestExpectation = self.expectation(description:"Not reading")
-        let content:String = "lorem ipsum"
-        let model:QRhero = QRhero()
-        DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
-            model.write(content:content) { (image:UIImage) in
+        let expect = expectation(description:"Not reading")
+        let content = "lorem ipsum"
+        let model = QRhero()
+        DispatchQueue.global(qos:.background).async {
+            model.write(content:content) { (image) in
                 XCTAssertEqual(Thread.current, Thread.main, "Should be main thread")
-                model.read(image:image, result: { (result:String) in
+                model.read(image:image, result: { (result) in
                     XCTAssertEqual(content, result, "Invalid content")
                     expect.fulfill()
                 })
             }
         }
-        self.waitForExpectations(timeout:1, handler:nil)
+        waitForExpectations(timeout:1, handler:nil)
     }
 }

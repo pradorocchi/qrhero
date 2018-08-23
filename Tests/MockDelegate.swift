@@ -6,10 +6,10 @@ class MockDelegate:QRViewDelegate {
     var onCancel:(() -> Void)?
     
     func qrRead(content:String) {
-        self.onRead?()
+        onRead?()
     }
     
     func qrCancelled() {
-        self.onCancel?()
+        onCancel?()
     }
 }
