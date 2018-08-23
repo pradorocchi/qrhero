@@ -14,6 +14,15 @@ class Demo:UIViewController, QRViewDelegate {
     
     required init?(coder:NSCoder) { return nil }
     
+    func qrRead(content:String) {
+        self.dismiss(animated:true) { [weak self] in
+            let alert:UIAlertController = UIAlertController(title:"Read", message:content,
+                                                            preferredStyle:UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title:"Continue", style:UIAlertAction.Style.default, handler:nil))
+            self?.present(alert, animated:true, completion:nil)
+        }
+    }
+    
     func qrCancelled() {
         self.dismiss(animated:true, completion:nil)
     }

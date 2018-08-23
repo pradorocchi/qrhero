@@ -2,6 +2,7 @@ import UIKit
 import AVFoundation
 
 class Camera:UIView, AVCaptureMetadataOutputObjectsDelegate {
+    weak var view:QRView!
     private var session:AVCaptureSession?
     
     init() {
@@ -16,10 +17,10 @@ class Camera:UIView, AVCaptureMetadataOutputObjectsDelegate {
         guard
             let object:AVMetadataMachineReadableCodeObject = objects.first as? AVMetadataMachineReadableCodeObject,
             let string:String = object.stringValue
-            else { return }
+        else { return }
         self.cleanSession()
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-//        self.presenter.read(string:string)
+        self.view.read(content:string)
     }
     
     func startSession() {

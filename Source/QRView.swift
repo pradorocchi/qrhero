@@ -25,6 +25,12 @@ public class QRView:UIViewController {
         self.delegate?.qrCancelled()
     }
     
+    func read(content:String) {
+        DispatchQueue.main.async { [weak self] in
+            self?.delegate?.qrRead(content:content)
+        }
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
@@ -37,8 +43,14 @@ public class QRView:UIViewController {
         self.doCamera()
     }
     
+    public override func viewWillDisappear(_ animated:Bool) {
+        super.viewWillDisappear(animated)
+        self.camera.cleanSession()
+    }
+    
     private func makeOutlets() {
         let camera:Camera = Camera()
+        camera.view = self
         self.camera = camera
         self.view.addSubview(camera)
         
