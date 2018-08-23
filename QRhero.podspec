@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = 'QRhero'
-s.version          = '1.0.0'
+s.version          = '1.0.21'
 s.summary          = 'QR Code'
 s.description      = <<-DESC
 Scan and create QR codes
