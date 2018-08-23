@@ -1,7 +1,7 @@
 import UIKit
 import QRhero
 
-class Demo:UIViewController {
+class Demo:UIViewController, QRViewDelegate {
     private weak var generate:UIButton!
     private weak var scanner:UIButton!
     private weak var text:UITextField!
@@ -13,6 +13,10 @@ class Demo:UIViewController {
     }
     
     required init?(coder:NSCoder) { return nil }
+    
+    func qrCancelled() {
+        self.dismiss(animated:true, completion:nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +73,9 @@ class Demo:UIViewController {
     }
     
     @objc private func doScanner() {
-        self.present(Scanner(), animated:true, completion:nil)
+        let view:QRView = QRView()
+        view.delegate = self
+        self.present(view, animated:true, completion:nil)
     }
     
     private func share(image:UIImage) {
