@@ -8,7 +8,8 @@ UICollectionViewDelegateFlowLayout {
     private static let size:CGFloat = 100
     private static let spacing:CGFloat = 1
     private static let bottom:CGFloat = 20
-    
+
+    weak var view:QRView!
     private var caching:PHCachingImageManager?
     private var items:PHFetchResult<PHAsset>?
     private var size:CGSize!
@@ -57,6 +58,17 @@ UICollectionViewDelegateFlowLayout {
                 cell.image.image = image
         }
         return cell
+    }
+    
+    func collectionView(_:UICollectionView, didSelectItemAt index:IndexPath) {
+        self.isUserInteractionEnabled = false
+        caching?.requestImageData(for:items![index.item], options:request) { [weak self] (data, _, _, _) in
+            guard
+                let data = data,
+                let image = UIImage(data:data)
+            else { return }
+            self?.view.read(image:image)
+        }
     }
     
     private func checkAuth() {

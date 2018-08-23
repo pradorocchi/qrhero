@@ -18,13 +18,29 @@ public class QRView:UIViewController {
     private weak var buttonLibrary:UIButton!
     private weak var border:UIView!
     private weak var separator:UIView!
+    private let qrHero:QRhero
     public override var prefersStatusBarHidden:Bool { return true }
     public override var shouldAutorotate:Bool { return false }
     public override var supportedInterfaceOrientations:UIInterfaceOrientationMask { return .portrait }
     
+    public init() {
+        self.qrHero = QRhero()
+        super.init(nibName:nil, bundle:nil)
+    }
+    
+    public required init?(coder:NSCoder) { return nil }
+    
     @objc func doCancel() {
         camera.cleanSession()
         delegate?.qrCancelled()
+    }
+    
+    func read(image:UIImage) {
+        self.qrHero.read(image:image, result: { [weak self] (content) in
+            self?.read(content:content)
+        } ) { [weak self] (error) in
+            self?.delegate?.qrError(error:error)
+        }
     }
     
     func read(content:String) {
@@ -57,6 +73,7 @@ public class QRView:UIViewController {
         self.camera = camera
         
         let library = Library()
+        library.view = self
         view.addSubview(library)
         self.library = library
         

@@ -22,6 +22,14 @@ class Demo:UIViewController, QRViewDelegate {
         }
     }
     
+    func qrError(error:Error) {
+        dismiss(animated:true) { [weak self] in
+            let alert = UIAlertController(title:"Read", message:error.localizedDescription, preferredStyle:.alert)
+            alert.addAction(UIAlertAction(title:"Continue", style:.default, handler:nil))
+            self?.present(alert, animated:true)
+        }
+    }
+    
     func qrCancelled() {
         dismiss(animated:true)
     }

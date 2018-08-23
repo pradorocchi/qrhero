@@ -4,6 +4,7 @@ import Foundation
 class MockDelegate:QRViewDelegate {
     var onRead:(() -> Void)?
     var onCancel:(() -> Void)?
+    var onError:(() -> Void)?
     
     func qrRead(content:String) {
         onRead?()
@@ -11,5 +12,9 @@ class MockDelegate:QRViewDelegate {
     
     func qrCancelled() {
         onCancel?()
+    }
+    
+    func qrError(error:Error) {
+        onError?()
     }
 }
