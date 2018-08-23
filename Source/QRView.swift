@@ -1,6 +1,7 @@
 import UIKit
 
 public class QRView:UIView {
+    public weak var delegate:QRViewDelegate?
     private weak var camera:UIView!
     private weak var library:UIView!
     private weak var buttonCancel:UIButton!
@@ -20,6 +21,10 @@ public class QRView:UIView {
     
     required init?(coder:NSCoder) { return nil }
     
+    @objc func doCancel() {
+        self.delegate?.qrCancelled()
+    }
+    
     private func makeOutlets() {
         let camera:UIView = UIView()
         camera.isUserInteractionEnabled = false
@@ -35,36 +40,36 @@ public class QRView:UIView {
         self.addSubview(library)
         
         let buttonCancel:UIButton = UIButton()
-        buttonCancel.addTarget(self, action:#selector(self.doCancel), for:UIControl.Event.touchUpInside)
         buttonCancel.translatesAutoresizingMaskIntoConstraints = false
         buttonCancel.setTitleColor(UIColor.white, for:UIControl.State.normal)
-        buttonCancel.setTitleColor(UIColor(white:1.0, alpha:0.2), for:UIControl.State.selected)
-        buttonCancel.setTitleColor(UIColor(white:1.0, alpha:0.2), for:UIControl.State.highlighted)
+        buttonCancel.setTitleColor(UIColor(white:1.0, alpha:0.4), for:UIControl.State.selected)
+        buttonCancel.setTitleColor(UIColor(white:1.0, alpha:0.4), for:UIControl.State.highlighted)
         buttonCancel.setTitle(Constants.cancel, for:UIControl.State())
-        buttonCancel.titleLabel!.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.bold)
+        buttonCancel.titleLabel!.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.light)
+        buttonCancel.addTarget(self, action:#selector(self.doCancel), for:UIControl.Event.touchUpInside)
         self.buttonCancel = buttonCancel
         self.addSubview(buttonCancel)
         
         let buttonCamera:UIButton = UIButton()
-        buttonCamera.addTarget(self, action:#selector(self.doCamera), for:UIControl.Event.touchUpInside)
         buttonCamera.translatesAutoresizingMaskIntoConstraints = false
-        buttonCamera.setTitleColor(UIColor.white, for:UIControl.State.normal)
-        buttonCamera.setTitleColor(UIColor(white:1.0, alpha:0.2), for:UIControl.State.selected)
-        buttonCamera.setTitleColor(UIColor(white:1.0, alpha:0.2), for:UIControl.State.highlighted)
+        buttonCamera.setTitleColor(UIColor(white:1.0, alpha:0.4), for:UIControl.State.normal)
+        buttonCamera.setTitleColor(UIColor.white, for:UIControl.State.selected)
+        buttonCamera.setTitleColor(UIColor.white, for:UIControl.State.highlighted)
         buttonCamera.setTitle(Constants.camera, for:UIControl.State())
         buttonCamera.titleLabel!.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.bold)
+        buttonCamera.addTarget(self, action:#selector(self.doCamera), for:UIControl.Event.touchUpInside)
         buttonCamera.isSelected = true
         self.buttonCamera = buttonCamera
         self.addSubview(buttonCamera)
         
         let buttonLibrary:UIButton = UIButton()
-        buttonLibrary.addTarget(self, action:#selector(self.doCancel), for:UIControl.Event.touchUpInside)
         buttonLibrary.translatesAutoresizingMaskIntoConstraints = false
-        buttonLibrary.setTitleColor(UIColor.white, for:UIControl.State.normal)
-        buttonLibrary.setTitleColor(UIColor(white:1.0, alpha:0.2), for:UIControl.State.selected)
-        buttonLibrary.setTitleColor(UIColor(white:1.0, alpha:0.2), for:UIControl.State.highlighted)
+        buttonLibrary.setTitleColor(UIColor(white:1.0, alpha:0.4), for:UIControl.State.normal)
+        buttonLibrary.setTitleColor(UIColor.white, for:UIControl.State.selected)
+        buttonLibrary.setTitleColor(UIColor.white, for:UIControl.State.highlighted)
         buttonLibrary.setTitle(Constants.library, for:UIControl.State())
         buttonLibrary.titleLabel!.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.bold)
+        buttonLibrary.addTarget(self, action:#selector(self.doLibrary), for:UIControl.Event.touchUpInside)
         self.buttonLibrary = buttonLibrary
         self.addSubview(buttonLibrary)
         
@@ -78,7 +83,7 @@ public class QRView:UIView {
         let separator:UIView = UIView()
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.isUserInteractionEnabled = false
-        separator.backgroundColor = UIColor.white
+        separator.backgroundColor = UIColor(white:1.0, alpha:0.3)
         self.separator = separator
         self.addSubview(separator)
     }
@@ -115,14 +120,10 @@ public class QRView:UIView {
         self.border.heightAnchor.constraint(equalToConstant:Constants.border).isActive = true
         
         self.separator.topAnchor.constraint(equalTo:self.topAnchor, constant:Constants.separator).isActive = true
-        self.separator.topAnchor.constraint(equalTo:self.border.topAnchor,
+        self.separator.bottomAnchor.constraint(equalTo:self.border.topAnchor,
                                             constant:-Constants.separator).isActive = true
-        self.separator.rightAnchor.constraint(equalTo:self.library.leftAnchor).isActive = true
+        self.separator.rightAnchor.constraint(equalTo:self.buttonLibrary.leftAnchor).isActive = true
         self.separator.widthAnchor.constraint(equalToConstant:Constants.border).isActive = true
-    }
-    
-    @objc private func doCancel() {
-        
     }
     
     @objc private func doCamera() {
@@ -135,8 +136,8 @@ public class QRView:UIView {
 }
 
 private struct Constants {
-    static let barHeight:CGFloat = 50.0
-    static let buttonWidth:CGFloat = 80.0
+    static let barHeight:CGFloat = 44.0
+    static let buttonWidth:CGFloat = 65.0
     static let font:CGFloat = 12.0
     static let border:CGFloat = 1.0
     static let separator:CGFloat = 10.0

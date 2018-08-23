@@ -2,11 +2,17 @@ import XCTest
 @testable import QRhero
 
 class TestReader:XCTestCase {
+    private var model:QRhero!
+    
+    override func setUp() {
+        super.setUp()
+        self.model = QRhero()
+    }
+    
     func testReturnErrorIfWrongImage() {
         let expect:XCTestExpectation = self.expectation(description:"Not reading")
-        let model:QRhero = QRhero()
         DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
-            model.read(image:UIImage(), result: { (result:String) in }, error: { (error:Error) in
+            self.model.read(image:UIImage(), result: { (result:String) in }, error: { (error:Error) in
                 XCTAssertEqual(Thread.current, Thread.main, "Should be main thread")
                 expect.fulfill()
             })
@@ -25,9 +31,8 @@ class TestReader:XCTestCase {
             XCTFail(error.localizedDescription)
             return
         }
-        let model:QRhero = QRhero()
         DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
-            model.read(image:image, result: { (result:String) in
+            self.model.read(image:image, result: { (result:String) in
                 XCTAssertEqual("http://en.m.wikipedia.org", result, "Invalid result")
                 XCTAssertEqual(Thread.current, Thread.main, "Should be main thread")
                 expect.fulfill()

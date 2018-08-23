@@ -16,6 +16,9 @@
 		DA4E6C3A212D39CD00EB8CC8 /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E6C39212D39CD00EB8CC8 /* Writer.swift */; };
 		DA4E6C3C212D42DD00EB8CC8 /* QRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E6C3B212D42DD00EB8CC8 /* QRView.swift */; };
 		DA4E6C3E212D47C400EB8CC8 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4E6C3D212D47C400EB8CC8 /* Scanner.swift */; };
+		DA7BCBD1212E81DA00AA6BE3 /* QRViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBD0212E81DA00AA6BE3 /* QRViewDelegate.swift */; };
+		DA7BCBD3212E81FC00AA6BE3 /* TestQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBD2212E81FC00AA6BE3 /* TestQRView.swift */; };
+		DA7BCBD5212E820700AA6BE3 /* MockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BCBD4212E820700AA6BE3 /* MockDelegate.swift */; };
 		DA81539D212BF22F00DD8FBE /* QRheroError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81539C212BF22F00DD8FBE /* QRheroError.swift */; };
 		DA81539F212BF28400DD8FBE /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA81539E212BF28400DD8FBE /* Reader.swift */; };
 		DAB2D8D7212BEB0F0067EDBF /* libQRhero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA245FC0212BE8F700A327B2 /* libQRhero.a */; };
@@ -65,6 +68,9 @@
 		DA4E6C39212D39CD00EB8CC8 /* Writer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writer.swift; sourceTree = "<group>"; };
 		DA4E6C3B212D42DD00EB8CC8 /* QRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRView.swift; sourceTree = "<group>"; };
 		DA4E6C3D212D47C400EB8CC8 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
+		DA7BCBD0212E81DA00AA6BE3 /* QRViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewDelegate.swift; sourceTree = "<group>"; };
+		DA7BCBD2212E81FC00AA6BE3 /* TestQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestQRView.swift; sourceTree = "<group>"; };
+		DA7BCBD4212E820700AA6BE3 /* MockDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDelegate.swift; sourceTree = "<group>"; };
 		DA81539C212BF22F00DD8FBE /* QRheroError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRheroError.swift; sourceTree = "<group>"; };
 		DA81539E212BF28400DD8FBE /* Reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
 		DAB2D8DB212BEC270067EDBF /* TestReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestReader.swift; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 				DA81539E212BF28400DD8FBE /* Reader.swift */,
 				DA4E6C39212D39CD00EB8CC8 /* Writer.swift */,
 				DA4E6C3B212D42DD00EB8CC8 /* QRView.swift */,
+				DA7BCBD0212E81DA00AA6BE3 /* QRViewDelegate.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -128,6 +135,8 @@
 			children = (
 				DAB2D8DB212BEC270067EDBF /* TestReader.swift */,
 				DA4E6C37212D392400EB8CC8 /* TestWriter.swift */,
+				DA7BCBD2212E81FC00AA6BE3 /* TestQRView.swift */,
+				DA7BCBD4212E820700AA6BE3 /* MockDelegate.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -279,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7BCBD1212E81DA00AA6BE3 /* QRViewDelegate.swift in Sources */,
 				DA4E6C3A212D39CD00EB8CC8 /* Writer.swift in Sources */,
 				DA81539F212BF28400DD8FBE /* Reader.swift in Sources */,
 				DA245FC8212BE98E00A327B2 /* QRhero.swift in Sources */,
@@ -291,7 +301,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7BCBD3212E81FC00AA6BE3 /* TestQRView.swift in Sources */,
 				DA4E6C38212D392400EB8CC8 /* TestWriter.swift in Sources */,
+				DA7BCBD5212E820700AA6BE3 /* MockDelegate.swift in Sources */,
 				DAB2D8DC212BEC270067EDBF /* TestReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
