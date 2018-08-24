@@ -1,15 +1,6 @@
 import UIKit
 
 public class QRView:UIViewController {
-    private static let barHeight:CGFloat = 38
-    private static let buttonWidth:CGFloat = 64
-    private static let font:CGFloat = 12
-    private static let border:CGFloat = 1
-    private static let separator:CGFloat = 10
-    private static let camera = "Camera"
-    private static let library = "Library"
-    private static let cancel = "Cancel"
-    
     public weak var delegate:QRViewDelegate?
     private weak var camera:Camera!
     private weak var library:Library!
@@ -22,6 +13,14 @@ public class QRView:UIViewController {
     public override var prefersStatusBarHidden:Bool { return true }
     public override var shouldAutorotate:Bool { return false }
     public override var supportedInterfaceOrientations:UIInterfaceOrientationMask { return .portrait }
+    private static let barHeight:CGFloat = 38
+    private static let buttonWidth:CGFloat = 64
+    private static let font:CGFloat = 12
+    private static let border:CGFloat = 1
+    private static let separator:CGFloat = 10
+    private static let camera = "Camera"
+    private static let library = "Library"
+    private static let cancel = "Cancel"
     
     public init() {
         self.qrHero = QRhero()

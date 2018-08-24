@@ -3,7 +3,10 @@ import AVFoundation
 
 class Camera:UIView, AVCaptureMetadataOutputObjectsDelegate {
     weak var view:QRView!
+    weak var finder:UIView?
     private var session:AVCaptureSession?
+    private static let border:CGFloat = 1
+    private static let finder:CGFloat = 250
     
     init() {
         super.init(frame:CGRect.zero)
@@ -35,12 +38,32 @@ class Camera:UIView, AVCaptureMetadataOutputObjectsDelegate {
             startOutput()
             layer.addSublayer(preview)
             session.startRunning()
+            makeOutlets()
+            layoutOutlets()
         }
     }
     
     func cleanSession() {
         session?.stopRunning()
         session = nil
+        finder?.removeFromSuperview()
+    }
+    
+    private func makeOutlets() {
+        let finder = UIView()
+        finder.isUserInteractionEnabled = false
+        finder.translatesAutoresizingMaskIntoConstraints = false
+        finder.layer.borderWidth = Camera.border
+        finder.layer.borderColor = UIColor.white.cgColor
+        addSubview(finder)
+        self.finder = finder
+    }
+    
+    private func layoutOutlets() {
+        finder?.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true
+        finder?.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = true
+        finder?.widthAnchor.constraint(equalToConstant:Camera.finder).isActive = true
+        finder?.heightAnchor.constraint(equalToConstant:Camera.finder).isActive = true
     }
     
     private func startInput() {
