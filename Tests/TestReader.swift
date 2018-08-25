@@ -12,7 +12,7 @@ class TestReader:XCTestCase {
     func testReturnErrorIfWrongImage() {
         let expect = expectation(description:"Not reading")
         DispatchQueue.global(qos:.background).async {
-            self.model.read(image:UIImage(), result: { (result) in }, error: { (error) in
+            self.model.read(image:UIImage(), result: { (_) in }, error: { (_) in
                 XCTAssertEqual(Thread.current, Thread.main, "Should be main thread")
                 expect.fulfill()
             })

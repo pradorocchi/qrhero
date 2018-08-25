@@ -2,8 +2,8 @@ import UIKit
 import Photos
 
 class LibraryCell:UICollectionViewCell {
-    var request:PHImageRequestID?
     weak var image:UIImageView!
+    var request:PHImageRequestID?
     
     override init(frame:CGRect) {
         super.init(frame:frame)

@@ -1,15 +1,6 @@
 import UIKit
 
 public class QRView:UIViewController {
-    private static let barHeight:CGFloat = 38
-    private static let buttonWidth:CGFloat = 64
-    private static let font:CGFloat = 12
-    private static let border:CGFloat = 1
-    private static let separator:CGFloat = 10
-    private static let camera = "Camera"
-    private static let library = "Library"
-    private static let cancel = "Cancel"
-    
     public weak var delegate:QRViewDelegate?
     private weak var camera:Camera!
     private weak var library:Library!
@@ -18,10 +9,20 @@ public class QRView:UIViewController {
     private weak var buttonLibrary:UIButton!
     private weak var border:UIView!
     private weak var separator:UIView!
+    private weak var label:UILabel!
     private let qrHero:QRhero
     public override var prefersStatusBarHidden:Bool { return true }
     public override var shouldAutorotate:Bool { return false }
     public override var supportedInterfaceOrientations:UIInterfaceOrientationMask { return .portrait }
+    public override var title:String? { didSet { label?.text = title } }
+    private static let barHeight:CGFloat = 38
+    private static let buttonWidth:CGFloat = 58
+    private static let font:CGFloat = 12
+    private static let border:CGFloat = 1
+    private static let separator:CGFloat = 10
+    private static let camera = "Camera"
+    private static let library = "Library"
+    private static let cancel = "Cancel"
     
     public init() {
         self.qrHero = QRhero()
@@ -83,7 +84,7 @@ public class QRView:UIViewController {
         buttonCancel.setTitleColor(UIColor(white:1, alpha:0.4), for:.selected)
         buttonCancel.setTitleColor(UIColor(white:1, alpha:0.4), for:.highlighted)
         buttonCancel.setTitle(QRView.cancel, for:[])
-        buttonCancel.titleLabel!.font = UIFont.systemFont(ofSize:QRView.font, weight:.light)
+        buttonCancel.titleLabel!.font = UIFont.systemFont(ofSize:QRView.font, weight:.regular)
         buttonCancel.addTarget(self, action:#selector(doCancel), for:.touchUpInside)
         view.addSubview(buttonCancel)
         self.buttonCancel = buttonCancel
@@ -123,6 +124,16 @@ public class QRView:UIViewController {
         separator.backgroundColor = UIColor(white:1, alpha:0.3)
         view.addSubview(separator)
         self.separator = separator
+        
+        let label:UILabel = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = NSTextAlignment.center
+        label.textColor = .white
+        label.isUserInteractionEnabled = false
+        label.font = UIFont.systemFont(ofSize:QRView.font, weight:.light)
+        label.text = title
+        view.addSubview(label)
+        self.label = label
     }
     
     private func layuoutOutlets() {
@@ -156,6 +167,10 @@ public class QRView:UIViewController {
         separator.rightAnchor.constraint(equalTo:buttonLibrary.leftAnchor).isActive = true
         separator.widthAnchor.constraint(equalToConstant:QRView.border).isActive = true
         
+        label.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
+        label.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo:border.topAnchor).isActive = true
+        
         if #available(iOS 11.0, *) {
             buttonCancel.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
             buttonLibrary.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -164,12 +179,14 @@ public class QRView:UIViewController {
                                         constant:QRView.barHeight).isActive = true
             separator.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor,
                                            constant:QRView.separator).isActive = true
+            label.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
         } else {
             buttonCancel.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
             buttonLibrary.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
             buttonCamera.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
             border.topAnchor.constraint(equalTo:view.topAnchor, constant:QRView.barHeight).isActive = true
             separator.topAnchor.constraint(equalTo:view.topAnchor, constant:QRView.separator).isActive = true
+            label.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         }
     }
     

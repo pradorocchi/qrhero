@@ -1,10 +1,10 @@
 import UIKit
 
 public class QRhero {
-    private static let identifier = "iturbide.QRhero"
     private let reader:Reader
     private let writer:Writer
     private let queue:DispatchQueue
+    private static let identifier = "iturbide.QRhero"
     
     public init() {
         reader = Reader()

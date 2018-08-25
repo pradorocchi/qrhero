@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
 s.name             = 'QRhero'
-s.version          = '1.0.21'
+s.version          = '1.1.25'
 s.summary          = 'QR Code'
 s.description      = <<-DESC
-Scan and create QR codes
+Scan and generate QR codes
 DESC
 s.homepage         = 'https://github.com/velvetroom/qrhero'
 s.license          = { :type => "MIT", :file => "LICENSE" }

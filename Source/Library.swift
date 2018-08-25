@@ -3,17 +3,16 @@ import Photos
 
 class Library:UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout {
-    private static let creation = "creationDate"
-    private static let media = "mediaType = %d"
-    private static let size:CGFloat = 100
-    private static let spacing:CGFloat = 1
-    private static let bottom:CGFloat = 20
-
     weak var view:QRView!
     private var caching:PHCachingImageManager?
     private var items:PHFetchResult<PHAsset>?
     private var size:CGSize!
     private let request:PHImageRequestOptions
+    private static let creation = "creationDate"
+    private static let media = "mediaType = %d"
+    private static let size:CGFloat = 100
+    private static let spacing:CGFloat = 1
+    private static let bottom:CGFloat = 20
     
     init() {
         request = PHImageRequestOptions()
