@@ -45,7 +45,7 @@ class Camera:UIView, AVCaptureMetadataOutputObjectsDelegate {
     func cleanSession() {
         session?.stopRunning()
         session = nil
-        finder?.removeFromSuperview()
+        DispatchQueue.main.async { [weak self] in self?.finder?.removeFromSuperview()  }
     }
     
     private func makeOutlets() {
@@ -74,10 +74,10 @@ class Camera:UIView, AVCaptureMetadataOutputObjectsDelegate {
     
     private func startOutput() {
         let output = AVCaptureMetadataOutput()
+        session?.addOutput(output)
         if output.availableMetadataObjectTypes.contains(.qr) {
             output.metadataObjectTypes = [.qr]
         }
         output.setMetadataObjectsDelegate(self, queue:.global(qos:.background))
-        session?.addOutput(output)
     }
 }
