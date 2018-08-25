@@ -13,15 +13,15 @@ public class QRhero {
             .inherit, target:.global(qos:.background))
     }
     
-    public func read(image:UIImage, result:@escaping((String) -> Void), error:((Error) -> Void)? = nil) {
+    public func read(image:UIImage, result:@escaping((String) -> Void), error:((QRheroError) -> Void)? = nil) {
         queue.async { [weak self] in
             guard let reader = self?.reader else { return }
             do {
                 let content = try reader.read(image:image)
                 DispatchQueue.main.async { result(content) }
-            } catch let exception {
+            } catch let exception as QRheroError {
                 DispatchQueue.main.async { error?(exception) }
-            }
+            } catch { }
         }
     }
     
