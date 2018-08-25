@@ -90,6 +90,7 @@ class Demo:UIViewController, QRViewDelegate {
     
     @objc private func doScanner() {
         let view = QRView()
+        view.title = "QR Codes"
         view.delegate = self
         present(view, animated:true)
     }
