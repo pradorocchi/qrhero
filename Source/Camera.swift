@@ -9,7 +9,7 @@ class Camera:UIView, AVCaptureMetadataOutputObjectsDelegate {
     private static let finder:CGFloat = 250
     
     init() {
-        super.init(frame:CGRect.zero)
+        super.init(frame:.zero)
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = false
     }
