@@ -5,7 +5,6 @@ class Camera:UIView, AVCaptureMetadataOutputObjectsDelegate {
     weak var view:QRView!
     private weak var finder:UIView?
     private var session:AVCaptureSession?
-    private static let border:CGFloat = 1
     private static let finder:CGFloat = 250
     
     init() {
@@ -52,7 +51,7 @@ class Camera:UIView, AVCaptureMetadataOutputObjectsDelegate {
         let finder = UIView()
         finder.isUserInteractionEnabled = false
         finder.translatesAutoresizingMaskIntoConstraints = false
-        finder.layer.borderWidth = Camera.border
+        finder.layer.borderWidth = 1
         finder.layer.borderColor = UIColor.white.cgColor
         addSubview(finder)
         finder.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true

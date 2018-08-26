@@ -2,17 +2,12 @@ import UIKit
 import CoreImage
 
 class Writer {
-    private static let filter = "CIQRCodeGenerator"
-    private static let key = "inputCorrectionLevel"
-    private static let value = "H"
-    private static let content = "inputMessage"
     private static let scale:CGFloat = 10
-    private static let saveScale:CGFloat = 1
     
     func write(content:String) -> UIImage? {
         var image:UIImage?
         if let cgImage = cgImageFor(content:content) {
-            image = UIImage(cgImage:cgImage, scale:Writer.saveScale, orientation:.up)
+            image = UIImage(cgImage:cgImage, scale:1, orientation:.up)
         }
         return image
     }
@@ -27,10 +22,10 @@ class Writer {
     }
     
     private func filter(content:String) -> CIFilter? {
-        let filter = CIFilter(name:Writer.filter)
-        filter?.setValue(Writer.value, forKey:Writer.key)
+        let filter = CIFilter(name:"CIQRCodeGenerator")
+        filter?.setValue("H", forKey:"inputCorrectionLevel")
         if let data = content.data(using:.utf8, allowLossyConversion:false) {
-            filter?.setValue(data, forKey:Writer.content)
+            filter?.setValue(data, forKey:"inputMessage")
         }
         return filter
     }

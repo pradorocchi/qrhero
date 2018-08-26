@@ -2,8 +2,6 @@ import UIKit
 import CoreImage
 
 class Reader {
-    private static let orientation = NSNumber(value:1)
-    
     func read(image:UIImage) throws -> String {
         return try read(features:features(image:image))
     }
@@ -19,8 +17,7 @@ class Reader {
     }
     
     private func optionsFor(image:CIImage) -> [String:Any] {
-        var options:[String:Any] = [CIDetectorAccuracy:CIDetectorAccuracyHigh,
-                                    CIDetectorImageOrientation:Reader.orientation]
+        var options:[String:Any] = [CIDetectorAccuracy:CIDetectorAccuracyHigh, CIDetectorImageOrientation:1]
         if let imageOrientation = image.properties[kCGImagePropertyOrientation as String] {
             options = [CIDetectorImageOrientation:imageOrientation]
         }

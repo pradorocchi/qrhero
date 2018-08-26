@@ -8,11 +8,7 @@ UICollectionViewDelegateFlowLayout {
     private var items:PHFetchResult<PHAsset>?
     private var size:CGSize!
     private let request:PHImageRequestOptions
-    private static let creation = "creationDate"
-    private static let media = "mediaType = %d"
-    private static let size:CGFloat = 100
     private static let spacing:CGFloat = 1
-    private static let bottom:CGFloat = 20
     
     init() {
         request = PHImageRequestOptions()
@@ -23,8 +19,7 @@ UICollectionViewDelegateFlowLayout {
         request.deliveryMode = .fastFormat
         flow.minimumLineSpacing = Library.spacing
         flow.minimumInteritemSpacing = Library.spacing
-        flow.sectionInset = UIEdgeInsets(top:Library.spacing, left:Library.spacing, bottom:Library.bottom,
-                                         right:Library.spacing)
+        flow.sectionInset = UIEdgeInsets(top:Library.spacing, left:Library.spacing, bottom:20, right:Library.spacing)
         backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
         alwaysBounceVertical = true
@@ -40,7 +35,7 @@ UICollectionViewDelegateFlowLayout {
     func startLoading() {
         if caching == nil {
             let width = bounds.width + 1
-            let itemSize = (width / floor(width / Library.size)) - 2
+            let itemSize = (width / floor(width / 100)) - 2
             size = CGSize(width:itemSize, height:itemSize)
             (collectionViewLayout as! UICollectionViewFlowLayout).itemSize = size
             checkAuth()
@@ -85,8 +80,8 @@ UICollectionViewDelegateFlowLayout {
             guard let roll = PHAssetCollection.fetchAssetCollections(with:.smartAlbum, subtype:.smartAlbumUserLibrary,
                                                                      options:nil).firstObject else { return }
             let options = PHFetchOptions()
-            options.sortDescriptors = [NSSortDescriptor(key:Library.creation, ascending:false)]
-            options.predicate = NSPredicate(format:Library.media, PHAssetMediaType.image.rawValue)
+            options.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending:false)]
+            options.predicate = NSPredicate(format:"mediaType = %d", PHAssetMediaType.image.rawValue)
             self?.load(roll:roll, options:options)
         }
     }

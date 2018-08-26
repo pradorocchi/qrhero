@@ -6,7 +6,6 @@ class TestQRView:XCTestCase {
     private var delegate:MockDelegate!
 
     override func setUp() {
-        super.setUp()
         view = QRView()
         delegate = MockDelegate()
         view.delegate = delegate
@@ -14,16 +13,16 @@ class TestQRView:XCTestCase {
     }
     
     func testCallsCancel() {
-        let expect = expectation(description:"Not called")
+        let expect = expectation(description:String())
         delegate.onCancel = { expect.fulfill() }
         view.doCancel()
         waitForExpectations(timeout:1, handler:nil)
     }
     
     func testReadNotifiesDelegate() {
-        let expect = expectation(description:"Not called")
+        let expect = expectation(description:String())
         delegate.onRead = {
-            XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
+            XCTAssertEqual(Thread.main, Thread.current)
             expect.fulfill()
         }
         DispatchQueue.global(qos:.background).async { self.view.read(content:String()) }
@@ -31,17 +30,14 @@ class TestQRView:XCTestCase {
     }
     
     func testReadImageWithSuccess() {
-        let expect = expectation(description:"Not reading")
+        let expect = expectation(description:String())
         let image:UIImage
         do {
             let data = try Data(contentsOf:Bundle(for:TestReader.self).url(forResource:"qrcode", withExtension:"png")!)
             image = UIImage(data:data)!
-        } catch let error {
-            XCTFail(error.localizedDescription)
-            return
-        }
+        } catch { return XCTFail() }
         delegate.onRead = {
-            XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
+            XCTAssertEqual(Thread.main, Thread.current)
             expect.fulfill()
         }
         DispatchQueue.global(qos:.background).async {
@@ -51,9 +47,9 @@ class TestQRView:XCTestCase {
     }
     
     func testReadWrongImage() {
-        let expect = expectation(description:"Not reporting error")
+        let expect = expectation(description:String())
         delegate.onError = {
-            XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
+            XCTAssertEqual(Thread.main, Thread.current)
             expect.fulfill()
         }
         DispatchQueue.global(qos:.background).async {
