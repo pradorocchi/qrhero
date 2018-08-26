@@ -5,15 +5,14 @@ class TestReader:XCTestCase {
     private var model:QRhero!
     
     override func setUp() {
-        super.setUp()
         model = QRhero()
     }
     
     func testReturnErrorIfWrongImage() {
-        let expect = expectation(description:"Not reading")
+        let expect = expectation(description:String())
         DispatchQueue.global(qos:.background).async {
             self.model.read(image:UIImage(), result: { (_) in }, error: { (_) in
-                XCTAssertEqual(Thread.current, Thread.main, "Should be main thread")
+                XCTAssertEqual(Thread.main, Thread.current)
                 expect.fulfill()
             })
         }
@@ -21,19 +20,16 @@ class TestReader:XCTestCase {
     }
     
     func testReturnContentFromValidImage() {
-        let expect = expectation(description:"Not reading")
+        let expect = expectation(description:String())
         let image:UIImage
         do {
             let data = try Data(contentsOf:Bundle(for:TestReader.self).url(forResource:"qrcode", withExtension:"png")!)
             image = UIImage(data:data)!
-        } catch let error {
-            XCTFail(error.localizedDescription)
-            return
-        }
+        } catch { return XCTFail() }
         DispatchQueue.global(qos:.background).async {
             self.model.read(image:image, result: { (result) in
-                XCTAssertEqual("http://en.m.wikipedia.org", result, "Invalid result")
-                XCTAssertEqual(Thread.current, Thread.main, "Should be main thread")
+                XCTAssertEqual("http://en.m.wikipedia.org", result)
+                XCTAssertEqual(Thread.main, Thread.current)
                 expect.fulfill()
             })
         }

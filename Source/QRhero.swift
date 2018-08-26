@@ -4,12 +4,11 @@ public class QRhero {
     private let reader:Reader
     private let writer:Writer
     private let queue:DispatchQueue
-    private static let identifier = "iturbide.QRhero"
     
     public init() {
         reader = Reader()
         writer = Writer()
-        queue = DispatchQueue(label:QRhero.identifier, qos:.background, attributes:.concurrent, autoreleaseFrequency:
+        queue = DispatchQueue(label:"iturbide.QRhero", qos:.background, attributes:.concurrent, autoreleaseFrequency:
             .inherit, target:.global(qos:.background))
     }
     
