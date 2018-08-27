@@ -5,7 +5,6 @@ class Camera:UIView, AVCaptureMetadataOutputObjectsDelegate {
     weak var view:QRView!
     private weak var finder:UIView?
     private var session:AVCaptureSession?
-    private static let finder:CGFloat = 250
     
     init() {
         super.init(frame:.zero)
@@ -56,8 +55,8 @@ class Camera:UIView, AVCaptureMetadataOutputObjectsDelegate {
         addSubview(finder)
         finder.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true
         finder.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = true
-        finder.widthAnchor.constraint(equalToConstant:Camera.finder).isActive = true
-        finder.heightAnchor.constraint(equalToConstant:Camera.finder).isActive = true
+        finder.widthAnchor.constraint(equalToConstant:250).isActive = true
+        finder.heightAnchor.constraint(equalToConstant:250).isActive = true
         self.finder = finder
     }
     
