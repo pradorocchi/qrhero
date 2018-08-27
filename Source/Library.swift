@@ -7,19 +7,17 @@ UICollectionViewDelegateFlowLayout {
     private var caching:PHCachingImageManager?
     private var items:PHFetchResult<PHAsset>?
     private var size:CGSize!
-    private let request:PHImageRequestOptions
-    private static let spacing:CGFloat = 1
+    private let request = PHImageRequestOptions()
     
     init() {
-        request = PHImageRequestOptions()
         let flow = UICollectionViewFlowLayout()
         super.init(frame:.zero, collectionViewLayout:flow)
         request.resizeMode = .fast
         request.isSynchronous = false
         request.deliveryMode = .fastFormat
-        flow.minimumLineSpacing = Library.spacing
-        flow.minimumInteritemSpacing = Library.spacing
-        flow.sectionInset = UIEdgeInsets(top:Library.spacing, left:Library.spacing, bottom:20, right:Library.spacing)
+        flow.minimumLineSpacing = 1
+        flow.minimumInteritemSpacing = 1
+        flow.sectionInset = UIEdgeInsets(top:1, left:1, bottom:20, right:1)
         backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
         alwaysBounceVertical = true

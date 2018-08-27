@@ -9,7 +9,7 @@ public class QRView:UIViewController {
     private weak var buttonLibrary:UIButton!
     private weak var separator:UIView!
     private weak var label:UILabel!
-    private let qrHero:QRhero
+    private let qrHero = QRhero()
     public override var prefersStatusBarHidden:Bool { return true }
     public override var shouldAutorotate:Bool { return false }
     public override var supportedInterfaceOrientations:UIInterfaceOrientationMask { return .portrait }
@@ -18,11 +18,7 @@ public class QRView:UIViewController {
     private static let font:CGFloat = 12
     private static let separator:CGFloat = 10
     
-    public init() {
-        qrHero = QRhero()
-        super.init(nibName:nil, bundle:nil)
-    }
-    
+    public init() { super.init(nibName:nil, bundle:nil) }
     public required init?(coder:NSCoder) { return nil }
     
     @objc func doCancel() {

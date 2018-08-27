@@ -1,16 +1,12 @@
 import UIKit
 
 public class QRhero {
-    private let reader:Reader
-    private let writer:Writer
-    private let queue:DispatchQueue
+    private let reader = Reader()
+    private let writer = Writer()
+    private let queue = DispatchQueue(label:String(), qos:.background, attributes:.concurrent,
+                                      target:.global(qos:.background))
     
-    public init() {
-        reader = Reader()
-        writer = Writer()
-        queue = DispatchQueue(label:"iturbide.QRhero", qos:.background, attributes:.concurrent, autoreleaseFrequency:
-            .inherit, target:.global(qos:.background))
-    }
+    public init() { }
     
     public func read(image:UIImage, result:@escaping((String) -> Void), error:((QRheroError) -> Void)? = nil) {
         queue.async { [weak self] in

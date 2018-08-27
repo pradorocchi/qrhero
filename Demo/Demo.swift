@@ -5,14 +5,7 @@ class Demo:UIViewController, QRViewDelegate {
     private weak var generate:UIButton!
     private weak var scanner:UIButton!
     private weak var text:UITextField!
-    private let model:QRhero
-    
-    init() {
-        model = QRhero()
-        super.init(nibName:nil, bundle:nil)
-    }
-    
-    required init?(coder:NSCoder) { return nil }
+    private let model = QRhero()
     
     func qrRead(content:String) {
         dismiss(animated:true) { [weak self] in
