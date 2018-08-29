@@ -14,10 +14,6 @@ public class QRView:UIViewController {
     public override var shouldAutorotate:Bool { return false }
     public override var supportedInterfaceOrientations:UIInterfaceOrientationMask { return .portrait }
     public override var title:String? { didSet { label?.text = title } }
-    private static let buttonWidth:CGFloat = 58
-    private static let font:CGFloat = 12
-    private static let separator:CGFloat = 10
-    
     public init() { super.init(nibName:nil, bundle:nil) }
     public required init?(coder:NSCoder) { return nil }
     
@@ -74,7 +70,7 @@ public class QRView:UIViewController {
         buttonCancel.setTitleColor(UIColor(white:1, alpha:0.4), for:.selected)
         buttonCancel.setTitleColor(UIColor(white:1, alpha:0.4), for:.highlighted)
         buttonCancel.setTitle("Cancel", for:[])
-        buttonCancel.titleLabel!.font = UIFont.systemFont(ofSize:QRView.font, weight:.regular)
+        buttonCancel.titleLabel!.font = .systemFont(ofSize:12, weight:.regular)
         buttonCancel.addTarget(self, action:#selector(doCancel), for:.touchUpInside)
         view.addSubview(buttonCancel)
         self.buttonCancel = buttonCancel
@@ -85,7 +81,7 @@ public class QRView:UIViewController {
         buttonCamera.setTitleColor(.white, for:.selected)
         buttonCamera.setTitleColor(.white, for:.highlighted)
         buttonCamera.setTitle("Camera", for:[])
-        buttonCamera.titleLabel!.font = UIFont.systemFont(ofSize:QRView.font, weight:.bold)
+        buttonCamera.titleLabel!.font = .systemFont(ofSize:12, weight:.bold)
         buttonCamera.addTarget(self, action:#selector(doCamera), for:.touchUpInside)
         view.addSubview(buttonCamera)
         self.buttonCamera = buttonCamera
@@ -96,7 +92,7 @@ public class QRView:UIViewController {
         buttonLibrary.setTitleColor(.white, for:.selected)
         buttonLibrary.setTitleColor(.white, for:.highlighted)
         buttonLibrary.setTitle("Library", for:[])
-        buttonLibrary.titleLabel!.font = UIFont.systemFont(ofSize:QRView.font, weight:.bold)
+        buttonLibrary.titleLabel!.font = .systemFont(ofSize:12, weight:.bold)
         buttonLibrary.addTarget(self, action:#selector(doLibrary), for:.touchUpInside)
         view.addSubview(buttonLibrary)
         self.buttonLibrary = buttonLibrary
@@ -113,7 +109,7 @@ public class QRView:UIViewController {
         label.textAlignment = NSTextAlignment.center
         label.textColor = .white
         label.isUserInteractionEnabled = false
-        label.font = UIFont.systemFont(ofSize:QRView.font, weight:.light)
+        label.font = .systemFont(ofSize:12, weight:.light)
         label.text = title
         view.addSubview(label)
         self.label = label
@@ -132,17 +128,17 @@ public class QRView:UIViewController {
         
         buttonCancel.bottomAnchor.constraint(equalTo:label.bottomAnchor).isActive = true
         buttonCancel.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
-        buttonCancel.widthAnchor.constraint(equalToConstant:QRView.buttonWidth).isActive = true
+        buttonCancel.widthAnchor.constraint(equalToConstant:58).isActive = true
         
         buttonLibrary.bottomAnchor.constraint(equalTo:label.bottomAnchor).isActive = true
         buttonLibrary.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
-        buttonLibrary.widthAnchor.constraint(equalToConstant:QRView.buttonWidth).isActive = true
+        buttonLibrary.widthAnchor.constraint(equalToConstant:58).isActive = true
         
         buttonCamera.bottomAnchor.constraint(equalTo:label.bottomAnchor).isActive = true
         buttonCamera.rightAnchor.constraint(equalTo:separator.leftAnchor).isActive = true
-        buttonCamera.widthAnchor.constraint(equalToConstant:QRView.buttonWidth).isActive = true
+        buttonCamera.widthAnchor.constraint(equalToConstant:58).isActive = true
         
-        separator.bottomAnchor.constraint(equalTo:label.bottomAnchor, constant:-QRView.separator).isActive = true
+        separator.bottomAnchor.constraint(equalTo:label.bottomAnchor, constant:-10).isActive = true
         separator.rightAnchor.constraint(equalTo:buttonLibrary.leftAnchor).isActive = true
         separator.widthAnchor.constraint(equalToConstant:1).isActive = true
         
@@ -154,14 +150,13 @@ public class QRView:UIViewController {
             buttonCancel.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
             buttonLibrary.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
             buttonCamera.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
-            separator.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor,
-                                           constant:QRView.separator).isActive = true
+            separator.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant:10).isActive = true
             label.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
         } else {
             buttonCancel.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
             buttonLibrary.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
             buttonCamera.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
-            separator.topAnchor.constraint(equalTo:view.topAnchor, constant:QRView.separator).isActive = true
+            separator.topAnchor.constraint(equalTo:view.topAnchor, constant:10).isActive = true
             label.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         }
     }
