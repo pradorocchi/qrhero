@@ -45,7 +45,7 @@ UICollectionViewDelegateFlowLayout {
             withReuseIdentifier:String(describing:LibraryCell.self), for:index) as! LibraryCell
         if let request = cell.request { caching?.cancelImageRequest(request) }
         cell.request = caching?.requestImage(
-            for:items![index.item], targetSize:size, contentMode:.aspectFill, options:request) { (image, _) in
+            for:items![index.item], targetSize:size, contentMode:.aspectFill, options:request) { image, _ in
                 cell.request = nil
                 cell.image.image = image
         }
@@ -54,7 +54,7 @@ UICollectionViewDelegateFlowLayout {
     
     func collectionView(_:UICollectionView, didSelectItemAt index:IndexPath) {
         self.isUserInteractionEnabled = false
-        caching?.requestImageData(for:items![index.item], options:request) { [weak self] (data, _, _, _) in
+        caching?.requestImageData(for:items![index.item], options:request) { [weak self] data, _, _, _ in
             guard
                 let data = data,
                 let image = UIImage(data:data)
@@ -66,7 +66,7 @@ UICollectionViewDelegateFlowLayout {
     private func checkAuth() {
         switch PHPhotoLibrary.authorizationStatus() {
         case .notDetermined:
-            PHPhotoLibrary.requestAuthorization() { [weak self] (status) in if status == .authorized { self?.load() } }
+            PHPhotoLibrary.requestAuthorization() { [weak self] status in if status == .authorized { self?.load() } }
         case .authorized: load()
         case .denied, .restricted: break
         }

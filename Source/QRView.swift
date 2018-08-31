@@ -23,9 +23,9 @@ public class QRView:UIViewController {
     }
     
     func read(image:UIImage) {
-        self.qrHero.read(image:image, result: { [weak self] (content) in
+        qrHero.read(image:image, result: { [weak self] content in
             self?.read(content:content)
-        } ) { [weak self] (error) in
+        } ) { [weak self] error in
             self?.delegate?.qrError(error:error)
         }
     }

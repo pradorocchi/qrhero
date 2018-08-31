@@ -76,7 +76,7 @@ class Demo:UIViewController, QRViewDelegate {
     }
     
     @objc private func doGenerate() {
-        model.write(content:text.text!) { [weak self] (image) in
+        model.write(content:text.text!) { [weak self] image in
             self?.share(image:image)
         }
     }

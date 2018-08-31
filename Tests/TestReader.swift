@@ -11,7 +11,7 @@ class TestReader:XCTestCase {
     func testReturnErrorIfWrongImage() {
         let expect = expectation(description:String())
         DispatchQueue.global(qos:.background).async {
-            self.model.read(image:UIImage(), result: { (_) in }, error: { (_) in
+            self.model.read(image:UIImage(), result: { _ in }, error: { _ in
                 XCTAssertEqual(Thread.main, Thread.current)
                 expect.fulfill()
             })
@@ -27,7 +27,7 @@ class TestReader:XCTestCase {
             image = UIImage(data:data)!
         } catch { return XCTFail() }
         DispatchQueue.global(qos:.background).async {
-            self.model.read(image:image, result: { (result) in
+            self.model.read(image:image, result: { result in
                 XCTAssertEqual("http://en.m.wikipedia.org", result)
                 XCTAssertEqual(Thread.main, Thread.current)
                 expect.fulfill()
