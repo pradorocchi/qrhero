@@ -22,10 +22,10 @@ class TestReader:XCTestCase {
     func testReturnContentFromValidImage() {
         let expect = expectation(description:String())
         let image:UIImage
-        do {
-            let data = try Data(contentsOf:Bundle(for:TestReader.self).url(forResource:"qrcode", withExtension:"png")!)
+        if let data = try? Data(contentsOf:
+            Bundle(for:TestReader.self).url(forResource:"qrcode", withExtension:"png")!) {
             image = UIImage(data:data)!
-        } catch { return XCTFail() }
+        } else { return XCTFail() }
         DispatchQueue.global(qos:.background).async {
             self.model.read(image:image, result: { result in
                 XCTAssertEqual("http://en.m.wikipedia.org", result)

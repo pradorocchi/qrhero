@@ -32,10 +32,10 @@ class TestQRView:XCTestCase {
     func testReadImageWithSuccess() {
         let expect = expectation(description:String())
         let image:UIImage
-        do {
-            let data = try Data(contentsOf:Bundle(for:TestReader.self).url(forResource:"qrcode", withExtension:"png")!)
+        if let data = try? Data(contentsOf:
+            Bundle(for:TestReader.self).url(forResource:"qrcode", withExtension:"png")!) {
             image = UIImage(data:data)!
-        } catch { return XCTFail() }
+        } else { return XCTFail() }
         delegate.onRead = {
             XCTAssertEqual(Thread.main, Thread.current)
             expect.fulfill()
