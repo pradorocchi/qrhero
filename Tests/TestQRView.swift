@@ -43,7 +43,7 @@ class TestQRView:XCTestCase {
         DispatchQueue.global(qos:.background).async {
             self.view.read(image:image)
         }
-        waitForExpectations(timeout:1, handler:nil)
+        waitForExpectations(timeout:2, handler:nil)
     }
     
     func testReadWrongImage() {
