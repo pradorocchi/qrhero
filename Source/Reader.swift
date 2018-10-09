@@ -13,7 +13,7 @@ class Reader {
                 return detector.features(in:image, options:options)
             }
         }
-        throw QRheroError.tryingToReadInvalidImage
+        throw HeroError.tryingToReadInvalidImage
     }
     
     private func optionsFor(image:CIImage) -> [String:Any] {
@@ -28,6 +28,6 @@ class Reader {
         if let message = (features.first { feature in feature is CIQRCodeFeature } as? CIQRCodeFeature)?.messageString {
             return message
         }
-        throw QRheroError.imageHasNoQrCode
+        throw HeroError.imageHasNoQrCode
     }
 }

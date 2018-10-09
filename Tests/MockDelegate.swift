@@ -14,7 +14,7 @@ class MockDelegate:QRViewDelegate {
         onCancel?()
     }
     
-    func qrError(error:QRheroError) {
+    func qrError(error:HeroError) {
         onError?()
     }
 }

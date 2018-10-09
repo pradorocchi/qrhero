@@ -1,6 +1,6 @@
 import UIKit
 
-public class QRhero {
+public class Hero {
     private let reader = Reader()
     private let writer = Writer()
     private let queue = DispatchQueue(label:String(), qos:.background, attributes:.concurrent,
@@ -8,13 +8,13 @@ public class QRhero {
     
     public init() { }
     
-    public func read(image:UIImage, result:@escaping((String) -> Void), error:((QRheroError) -> Void)? = nil) {
+    public func read(image:UIImage, result:@escaping((String) -> Void), error:((HeroError) -> Void)? = nil) {
         queue.async { [weak self] in
             guard let reader = self?.reader else { return }
             do {
                 let content = try reader.read(image:image)
                 DispatchQueue.main.async { result(content) }
-            } catch let exception as QRheroError {
+            } catch let exception as HeroError {
                 DispatchQueue.main.async { error?(exception) }
             } catch { }
         }

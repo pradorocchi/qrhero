@@ -2,10 +2,10 @@ import XCTest
 @testable import QRhero
 
 class TestReader:XCTestCase {
-    private var model:QRhero!
+    private var model:Hero!
     
     override func setUp() {
-        model = QRhero()
+        model = Hero()
     }
     
     func testReturnErrorIfWrongImage() {

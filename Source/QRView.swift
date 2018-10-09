@@ -7,7 +7,7 @@ public class QRView:UIViewController {
     private weak var buttonCamera:UIButton!
     private weak var buttonLibrary:UIButton!
     private weak var label:UILabel!
-    private let qrHero = QRhero()
+    private let qrHero = Hero()
     public override var prefersStatusBarHidden:Bool { return true }
     public override var shouldAutorotate:Bool { return false }
     public override var supportedInterfaceOrientations:UIInterfaceOrientationMask { return .portrait }

@@ -5,7 +5,7 @@ class Demo:UIViewController, QRViewDelegate {
     private weak var generate:UIButton!
     private weak var scanner:UIButton!
     private weak var text:UITextField!
-    private let model = QRhero()
+    private let hero = Hero()
     
     func qrRead(content:String) {
         dismiss(animated:true) { [weak self] in
@@ -15,7 +15,7 @@ class Demo:UIViewController, QRViewDelegate {
         }
     }
     
-    func qrError(error:QRheroError) {
+    func qrError(error:HeroError) {
         dismiss(animated:true) { [weak self] in
             let alert = UIAlertController(title:"Read", message:error.localizedDescription, preferredStyle:.alert)
             alert.addAction(UIAlertAction(title:"Continue", style:.default, handler:nil))
@@ -76,7 +76,7 @@ class Demo:UIViewController, QRViewDelegate {
     }
     
     @objc private func doGenerate() {
-        model.write(content:text.text!) { [weak self] image in
+        hero.write(content:text.text!) { [weak self] image in
             self?.share(image:image)
         }
     }
