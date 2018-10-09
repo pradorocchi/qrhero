@@ -7,19 +7,17 @@ UICollectionViewDelegateFlowLayout {
     private var caching:PHCachingImageManager?
     private var items:PHFetchResult<PHAsset>?
     private var size:CGSize!
-    private let request:PHImageRequestOptions
-    private static let spacing:CGFloat = 1
+    private let request = PHImageRequestOptions()
     
     init() {
-        request = PHImageRequestOptions()
         let flow = UICollectionViewFlowLayout()
         super.init(frame:.zero, collectionViewLayout:flow)
         request.resizeMode = .fast
         request.isSynchronous = false
         request.deliveryMode = .fastFormat
-        flow.minimumLineSpacing = Library.spacing
-        flow.minimumInteritemSpacing = Library.spacing
-        flow.sectionInset = UIEdgeInsets(top:Library.spacing, left:Library.spacing, bottom:20, right:Library.spacing)
+        flow.minimumLineSpacing = 1
+        flow.minimumInteritemSpacing = 1
+        flow.sectionInset = UIEdgeInsets(top:1, left:1, bottom:20, right:1)
         backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
         alwaysBounceVertical = true
@@ -47,7 +45,7 @@ UICollectionViewDelegateFlowLayout {
             withReuseIdentifier:String(describing:LibraryCell.self), for:index) as! LibraryCell
         if let request = cell.request { caching?.cancelImageRequest(request) }
         cell.request = caching?.requestImage(
-            for:items![index.item], targetSize:size, contentMode:.aspectFill, options:request) { (image, _) in
+            for:items![index.item], targetSize:size, contentMode:.aspectFill, options:request) { image, _ in
                 cell.request = nil
                 cell.image.image = image
         }
@@ -56,7 +54,7 @@ UICollectionViewDelegateFlowLayout {
     
     func collectionView(_:UICollectionView, didSelectItemAt index:IndexPath) {
         self.isUserInteractionEnabled = false
-        caching?.requestImageData(for:items![index.item], options:request) { [weak self] (data, _, _, _) in
+        caching?.requestImageData(for:items![index.item], options:request) { [weak self] data, _, _, _ in
             guard
                 let data = data,
                 let image = UIImage(data:data)
@@ -68,7 +66,7 @@ UICollectionViewDelegateFlowLayout {
     private func checkAuth() {
         switch PHPhotoLibrary.authorizationStatus() {
         case .notDetermined:
-            PHPhotoLibrary.requestAuthorization() { [weak self] (status) in if status == .authorized { self?.load() } }
+            PHPhotoLibrary.requestAuthorization() { [weak self] status in if status == .authorized { self?.load() } }
         case .authorized: load()
         case .denied, .restricted: break
         }

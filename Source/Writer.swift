@@ -2,8 +2,6 @@ import UIKit
 import CoreImage
 
 class Writer {
-    private static let scale:CGFloat = 10
-    
     func write(content:String) -> UIImage? {
         var image:UIImage?
         if let cgImage = cgImageFor(content:content) {
@@ -15,7 +13,7 @@ class Writer {
     private func cgImageFor(content:String) -> CGImage? {
         var image:CGImage?
         if let ci = filter(content:content)?.outputImage?.transformed(by:
-            CGAffineTransform(scaleX:Writer.scale, y:Writer.scale)) {
+            CGAffineTransform(scaleX:10, y:10)) {
             image = CIContext().createCGImage(ci, from:ci.extent)
         }
         return image

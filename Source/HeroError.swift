@@ -1,6 +1,6 @@
 import Foundation
 
-public enum QRheroError:LocalizedError {
+public enum HeroError:LocalizedError {
     case tryingToReadInvalidImage
     case imageHasNoQrCode
     
