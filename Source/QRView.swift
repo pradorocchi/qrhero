@@ -4,10 +4,8 @@ public class QRView:UIViewController {
     public weak var delegate:QRViewDelegate?
     private weak var camera:Camera!
     private weak var library:Library!
-    private weak var buttonCancel:UIButton!
     private weak var buttonCamera:UIButton!
     private weak var buttonLibrary:UIButton!
-    private weak var separator:UIView!
     private weak var label:UILabel!
     private let qrHero = QRhero()
     public override var prefersStatusBarHidden:Bool { return true }
@@ -40,7 +38,6 @@ public class QRView:UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black
         makeOutlets()
-        layuoutOutlets()
     }
     
     public override func viewDidAppear(_ animated:Bool) {
@@ -66,16 +63,15 @@ public class QRView:UIViewController {
         
         let buttonCancel = UIButton()
         buttonCancel.translatesAutoresizingMaskIntoConstraints = false
-        buttonCancel.setTitleColor(.white, for:.normal)
+        buttonCancel.setTitleColor(UIColor(white:1, alpha:0.8), for:.normal)
         buttonCancel.setTitleColor(UIColor(white:1, alpha:0.4), for:.selected)
         buttonCancel.setTitleColor(UIColor(white:1, alpha:0.4), for:.highlighted)
-        buttonCancel.setTitle("Cancel", for:[])
-        buttonCancel.titleLabel!.font = .systemFont(ofSize:12, weight:.regular)
+        buttonCancel.setTitle("×", for:[])
+        buttonCancel.titleLabel!.font = .systemFont(ofSize:26, weight:.regular)
         buttonCancel.addTarget(self, action:#selector(doCancel), for:.touchUpInside)
         view.addSubview(buttonCancel)
-        self.buttonCancel = buttonCancel
         
-        let buttonCamera:UIButton = UIButton()
+        let buttonCamera = UIButton()
         buttonCamera.translatesAutoresizingMaskIntoConstraints = false
         buttonCamera.setTitleColor(UIColor(white:1, alpha:0.4), for:.normal)
         buttonCamera.setTitleColor(.white, for:.selected)
@@ -86,7 +82,7 @@ public class QRView:UIViewController {
         view.addSubview(buttonCamera)
         self.buttonCamera = buttonCamera
         
-        let buttonLibrary:UIButton = UIButton()
+        let buttonLibrary = UIButton()
         buttonLibrary.translatesAutoresizingMaskIntoConstraints = false
         buttonLibrary.setTitleColor(UIColor(white:1, alpha:0.4), for:.normal)
         buttonLibrary.setTitleColor(.white, for:.selected)
@@ -97,25 +93,22 @@ public class QRView:UIViewController {
         view.addSubview(buttonLibrary)
         self.buttonLibrary = buttonLibrary
         
-        let separator:UIView = UIView()
+        let separator = UIView()
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.isUserInteractionEnabled = false
         separator.backgroundColor = UIColor(white:1, alpha:0.3)
         view.addSubview(separator)
-        self.separator = separator
         
-        let label:UILabel = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = NSTextAlignment.center
         label.textColor = .white
         label.isUserInteractionEnabled = false
-        label.font = .systemFont(ofSize:12, weight:.light)
+        label.font = .systemFont(ofSize:14, weight:.medium)
         label.text = title
         view.addSubview(label)
         self.label = label
-    }
-    
-    private func layuoutOutlets() {
+        
         camera.topAnchor.constraint(equalTo:label.bottomAnchor).isActive = true
         camera.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         camera.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
@@ -128,7 +121,7 @@ public class QRView:UIViewController {
         
         buttonCancel.bottomAnchor.constraint(equalTo:label.bottomAnchor).isActive = true
         buttonCancel.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
-        buttonCancel.widthAnchor.constraint(equalToConstant:58).isActive = true
+        buttonCancel.widthAnchor.constraint(equalToConstant:48).isActive = true
         
         buttonLibrary.bottomAnchor.constraint(equalTo:label.bottomAnchor).isActive = true
         buttonLibrary.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
@@ -144,7 +137,7 @@ public class QRView:UIViewController {
         
         label.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         label.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
-        label.heightAnchor.constraint(equalToConstant:38).isActive = true
+        label.heightAnchor.constraint(equalToConstant:50).isActive = true
         
         if #available(iOS 11.0, *) {
             buttonCancel.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
